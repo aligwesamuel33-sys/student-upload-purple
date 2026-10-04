@@ -6,32 +6,33 @@
     <title>Student Upload</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fira+Code:wght@400;500;600;700&family=Syne:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <main class="page-shell">
+    <main class="app-shell">
       <header class="title-row">
-        <div>
-          <p class="eyebrow">Student register</p>
-          <h1>Student Upload</h1>
-        </div>
-        <span id="studentCount" class="count-pill" aria-live="polite">0</span>
+        <h1>Student Upload</h1>
+        <span class="count-pill" id="countPill" aria-live="polite">0</span>
       </header>
 
-      <section class="panel form-panel">
+      <section class="panel form-panel" aria-label="Student form">
+        <h2>Add Student</h2>
         <form id="studentForm" novalidate>
           <div class="field-grid">
             <div class="field-group">
               <label for="name">Full name</label>
               <input id="name" name="name" type="text" autocomplete="name" />
-              <p id="nameError" class="error" aria-live="polite"></p>
+              <p class="error" id="nameError" aria-live="polite"></p>
             </div>
 
             <div class="field-group">
               <label for="matric">Matric number</label>
-              <input id="matric" name="matric" type="text" inputmode="numeric" placeholder="23/024145123" />
-              <p id="matricError" class="error" aria-live="polite"></p>
+              <input id="matric" name="matric" type="text" placeholder="23/024145123" />
+              <p class="error" id="matricError" aria-live="polite"></p>
             </div>
 
             <div class="field-group">
@@ -45,52 +46,50 @@
                 <option value="500">500 Level</option>
                 <option value="600">600 Level</option>
               </select>
-              <p id="levelError" class="error" aria-live="polite"></p>
+              <p class="error" id="levelError" aria-live="polite"></p>
             </div>
 
             <div class="field-group">
               <label for="department">Department</label>
-              <input id="department" name="department" type="text" list="departments" />
-              <datalist id="departments">
+              <input id="department" name="department" type="text" list="departmentList" />
+              <datalist id="departmentList">
                 <option value="Computer Science"></option>
                 <option value="Accounting"></option>
                 <option value="Mass Communication"></option>
-                <option value="Business Administration"></option>
-                <option value="Economics"></option>
-                <option value="Electrical Engineering"></option>
-                <option value="Civil Engineering"></option>
-                <option value="Psychology"></option>
+                <option value="Law"></option>
                 <option value="Medicine"></option>
-                <option value="Biochemistry"></option>
+                <option value="Engineering"></option>
+                <option value="Business Administration"></option>
+                <option value="Education"></option>
               </datalist>
-              <p id="departmentError" class="error" aria-live="polite"></p>
+              <p class="error" id="departmentError" aria-live="polite"></p>
             </div>
           </div>
 
-          <div class="form-actions">
-            <button id="addStudentBtn" type="submit" class="primary-button">Add student</button>
-          </div>
+          <button type="submit" class="primary-btn">Add student</button>
         </form>
       </section>
 
-      <section class="panel register-panel">
-        <div class="panel-head">
+      <section class="panel register-panel" aria-label="Student register">
+        <div class="panel-header">
           <h2>Student register</h2>
-          <div class="action-row">
-            <button id="toggleNamesBtn" type="button" class="secondary-button">Done, show names</button>
-            <button id="removeLastBtn" type="button" class="ghost-button" disabled>Remove last</button>
+          <div class="button-row">
+            <button type="button" id="toggleNamesBtn" class="secondary-btn">Done, show names</button>
+            <button type="button" id="removeLastBtn" class="danger-btn" disabled>Remove last</button>
           </div>
         </div>
 
+        <div id="statusMessage" class="status-message" aria-live="polite"></div>
+
         <div id="emptyState" class="empty-state">
           <p>No students added yet.</p>
-          <button id="sampleBtn" type="button" class="secondary-button">Add 3 sample students</button>
+          <button type="button" id="addSamplesBtn" class="secondary-btn">Add 3 sample students</button>
         </div>
 
-        <div id="studentGrid" class="student-grid" aria-live="polite"></div>
+        <div id="cardGrid" class="card-grid" aria-live="polite"></div>
       </section>
 
-      <aside id="namesPanel" class="panel names-panel hidden" aria-live="polite">
+      <aside id="namesPanel" class="panel names-panel" aria-live="polite" hidden>
         <h2>Student names</h2>
         <div id="namesList" class="names-list"></div>
       </aside>
