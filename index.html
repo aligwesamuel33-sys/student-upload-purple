@@ -1,100 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Student Upload</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fira+Code:wght@400;500;600;700&family=Syne:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <main class="app-shell">
-      <header class="title-row">
-        <h1>Student Upload</h1>
-        <span class="count-pill" id="countPill" aria-live="polite">0</span>
-      </header>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Registration Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand-mark" aria-hidden="true">S</div>
+    <div>
+      <h1>Student Registration Portal</h1>
+      <p>Admissions • Student Records</p>
+    </div>
+  </header>
 
-      <section class="panel form-panel" aria-label="Student form">
-        <h2>Add Student</h2>
-        <form id="studentForm" novalidate>
-          <div class="field-grid">
-            <div class="field-group">
-              <label for="name">Full name</label>
-              <input id="name" name="name" type="text" autocomplete="name" />
-              <p class="error" id="nameError" aria-live="polite"></p>
-            </div>
+  <main class="container">
+    <section class="intro">
+      <span class="eyebrow">ADMISSIONS OFFICE</span>
+      <h2>Register a new student</h2>
+      <p>Complete every field below. Your details will appear in the registered students table.</p>
+    </section>
 
-            <div class="field-group">
-              <label for="matric">Matric number</label>
-              <input id="matric" name="matric" type="text" placeholder="23/024145123" />
-              <p class="error" id="matricError" aria-live="polite"></p>
-            </div>
-
-            <div class="field-group">
-              <label for="level">Level</label>
-              <select id="level" name="level">
-                <option value="">Choose level</option>
-                <option value="100">100 Level</option>
-                <option value="200">200 Level</option>
-                <option value="300">300 Level</option>
-                <option value="400">400 Level</option>
-                <option value="500">500 Level</option>
-                <option value="600">600 Level</option>
-              </select>
-              <p class="error" id="levelError" aria-live="polite"></p>
-            </div>
-
-            <div class="field-group">
-              <label for="department">Department</label>
-              <input id="department" name="department" type="text" list="departmentList" />
-              <datalist id="departmentList">
-                <option value="Computer Science"></option>
-                <option value="Accounting"></option>
-                <option value="Mass Communication"></option>
-                <option value="Law"></option>
-                <option value="Medicine"></option>
-                <option value="Engineering"></option>
-                <option value="Business Administration"></option>
-                <option value="Education"></option>
-              </datalist>
-              <p class="error" id="departmentError" aria-live="polite"></p>
-            </div>
+    <section class="card" aria-labelledby="form-heading">
+      <h3 id="form-heading">Student information</h3>
+      <form id="studentForm" novalidate>
+        <div class="form-grid">
+          <div class="field">
+            <label for="name">Full name</label>
+            <input id="name" name="name" type="text" autocomplete="name" placeholder="e.g. Ada Okafor" required>
+            <small class="error" id="nameError" aria-live="polite"></small>
           </div>
-
-          <button type="submit" class="primary-btn">Add student</button>
-        </form>
-      </section>
-
-      <section class="panel register-panel" aria-label="Student register">
-        <div class="panel-header">
-          <h2>Student register</h2>
-          <div class="button-row">
-            <button type="button" id="toggleNamesBtn" class="secondary-btn">Done, show names</button>
-            <button type="button" id="removeLastBtn" class="danger-btn" disabled>Remove last</button>
+          <div class="field">
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="e.g. ada@example.com" required>
+            <small class="error" id="emailError" aria-live="polite"></small>
+          </div>
+          <div class="field">
+            <label for="phone">Phone number</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="e.g. 08012345678" required>
+            <small class="error" id="phoneError" aria-live="polite"></small>
+          </div>
+          <div class="field">
+            <label for="age">Age</label>
+            <input id="age" name="age" type="number" min="16" max="100" placeholder="16–100" required>
+            <small class="error" id="ageError" aria-live="polite"></small>
+          </div>
+          <div class="field">
+            <label for="matric">Matriculation number</label>
+            <input id="matric" name="matric" type="text" placeholder="e.g. CSC/2026/001" required>
+            <small class="error" id="matricError" aria-live="polite"></small>
+          </div>
+          <div class="field">
+            <label for="department">Department</label>
+            <select id="department" name="department" required>
+              <option value="">Select department</option>
+              <option>Computer Science</option>
+              <option>Information Technology</option>
+              <option>Cybersecurity</option>
+              <option>Software Engineering</option>
+              <option>Mathematics</option>
+              <option>Physics</option>
+              <option>Business Administration</option>
+              <option>Mass Communication</option>
+              <option>Other</option>
+            </select>
+            <small class="error" id="departmentError" aria-live="polite"></small>
+          </div>
+          <div class="field field-full">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" autocomplete="new-password" placeholder="At least 8 characters, including a number" required>
+            <small class="hint">Use at least 8 characters and include one number.</small>
+            <small class="error" id="passwordError" aria-live="polite"></small>
           </div>
         </div>
+        <div id="formMessage" class="form-message" role="status" aria-live="polite"></div>
+        <button class="primary-button" type="submit">Register student <span aria-hidden="true">→</span></button>
+      </form>
+    </section>
 
-        <div id="statusMessage" class="status-message" aria-live="polite"></div>
-
-        <div id="emptyState" class="empty-state">
-          <p>No students added yet.</p>
-          <button type="button" id="addSamplesBtn" class="secondary-btn">Add 3 sample students</button>
+    <section class="records-section">
+      <div class="records-heading">
+        <div>
+          <span class="eyebrow">REGISTRATION RECORDS</span>
+          <h2>Registered students</h2>
         </div>
+        <div class="count-box"><strong id="studentCount">0</strong><span>Total students</span></div>
+      </div>
+      <div class="table-card">
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th><th>Student</th><th>Matric number</th><th>Email</th><th>Phone</th><th>Age</th><th>Department</th>
+              </tr>
+            </thead>
+            <tbody id="studentTableBody">
+              <tr id="emptyRow"><td colspan="7" class="empty-state">No students registered yet. Add the first student using the form above.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="privacy-note">Demo note: records are stored in this browser using local storage. Passwords are not displayed or saved.</p>
+    </section>
+  </main>
 
-        <div id="cardGrid" class="card-grid" aria-live="polite"></div>
-      </section>
-
-      <aside id="namesPanel" class="panel names-panel" aria-live="polite" hidden>
-        <h2>Student names</h2>
-        <div id="namesList" class="names-list"></div>
-      </aside>
-    </main>
-
-    <script src="script.js"></script>
-  </body>
+  <footer><p>Student Registration Portal <span>•</span> Front-end coursework project</p></footer>
+  <script src="script.js"></script>
+</body>
 </html>
